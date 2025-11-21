@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Top Navigation -->
+  <!-- Header / Nav -->
   <header class="site-header">
     <div class="logo">ANALYSIS4U</div>
     <nav class="nav">
@@ -19,15 +19,13 @@
   </header>
 
   <main>
-    <!-- Contact Intro -->
     <section class="contact-section">
       <h1>Tell me what you need analyzed</h1>
       <p>
-        Tell me about your business, process issue, or data problem.  
-        I review each message personally and follow up with clear next steps.
+        Share a bit about your business, process issue, or data problem.
+        I’ll review it personally and follow up with clear, practical next steps.
       </p>
 
-      <!-- CONTACT FORM -->
       <form id="contactForm" class="contact-form">
         <div class="form-grid">
           <div class="form-field">
@@ -41,7 +39,7 @@
           </div>
 
           <div class="form-field">
-            <label for="company">Company Name</label>
+            <label for="company">Company</label>
             <input type="text" id="company" name="company" />
           </div>
 
@@ -58,7 +56,7 @@
               id="problem"
               name="problem"
               rows="4"
-              placeholder="Describe the analysis, process issue, incident trend, or question you need clarity on."
+              placeholder="Describe the issue, trend, or decision you need clarity on."
               required
             ></textarea>
           </div>
@@ -69,7 +67,7 @@
               id="outcome"
               name="outcome"
               rows="4"
-              placeholder="Example: reduce incidents, improve workflow, understand patterns, find cost savings."
+              placeholder="Example: reduce incidents, improve workflow, find cost savings, see patterns."
             ></textarea>
           </div>
         </div>
@@ -78,19 +76,6 @@
 
         <p id="formStatus" class="form-status"></p>
       </form>
-
-      <section class="contact-followup">
-        <h2>How I’ll respond</h2>
-        <p>
-          I’ll review your message, look at the type of data you have available,
-          and reply with next-step options:
-        </p>
-        <ul>
-          <li>Quick assessment of what’s possible with your data</li>
-          <li>Recommended charts, dashboards, or reports</li>
-          <li>Expected effort and turnaround time</li>
-        </ul>
-      </section>
     </section>
   </main>
 
@@ -98,22 +83,23 @@
     <p>© <span id="year"></span> Analysis4U · Drew Harris</p>
   </footer>
 
-  <!-- Form wiring to Google Apps Script -->
   <script>
-    // Your live Web App endpoint from Apps Script
-    const SCRIPT_URL =
-      "https://script.google.com/macros/s/AKfycbyvtn0wD_nt6LiqSf7G5sW_k4HfeaABWRNmUPr-f6WGiHahQo_-Ou0cu73M94gJ00QC/exec";
+    // 🔗 Your Apps Script Web App URL (the one that ends with /exec)
+    const SCRIPT_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
 
     const form = document.getElementById("contactForm");
     const statusEl = document.getElementById("formStatus");
+    const yearEl = document.getElementById("year");
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
+
       statusEl.textContent = "Sending...";
-      statusEl.classList.remove("error");
-      statusEl.classList.remove("success");
+      statusEl.classList.remove("error", "success");
 
       const payload = {
         fullName: form.fullName.value.trim(),
@@ -125,9 +111,10 @@
       };
 
       try {
+        // Fire-and-forget style; we don't need to read the response body.
         await fetch(SCRIPT_URL, {
           method: "POST",
-          mode: "no-cors", // send without CORS blocking; response is opaque but Apps Script still receives it
+          mode: "no-cors",
           headers: {
             "Content-Type": "application/json",
           },
@@ -141,7 +128,7 @@
       } catch (err) {
         console.error(err);
         statusEl.textContent =
-          "Something went wrong sending your message. Please email me directly at drewhrs2@gmail.com.";
+          "Something went wrong sending your message. Please try again or email me directly at drewhrs2@gmail.com.";
         statusEl.classList.add("error");
       }
     });
