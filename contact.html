@@ -31,7 +31,9 @@
         personally and follow up with clear next steps.
       </p>
 
-      <form id="contact-form">
+      <!-- CONTACT FORM -->
+      <!-- No action attribute – JS below will send it to your Apps Script -->
+      <form id="contact-form" method="POST">
         <div class="form-grid">
           <div class="form-field">
             <label for="fullName">Full Name</label>
@@ -64,64 +66,4 @@
 
           <div class="form-field">
             <label for="outcome">What outcome do you hope to achieve?</label>
-            <textarea id="outcome" name="outcome" rows="4"
-              placeholder="Example: reduce incidents, improve workflow, understand patterns, find cost savings."
-              required></textarea>
-          </div>
-        </div>
-
-        <input type="hidden" name="source" value="Analysis4U">
-
-        <button type="submit" class="hero-button">Send Message</button>
-
-        <p id="form-status" class="form-status"></p>
-      </form>
-
-      <h2>How I’ll respond</h2>
-      <p>
-        I’ll review your message, look at the type of data you have available, and reply with
-        next-step options. That may include a quick clarification email, a proposal for a
-        focused analysis, or suggestions on how to start gathering the right data.
-      </p>
-    </section>
-
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Analysis4U. All rights reserved.</p>
-  </footer>
-
-  <script>
-    // 👇 Replace this with your Apps Script web app URL
-    const SCRIPT_URL = 'PASTE_YOUR_WEB_APP_URL_HERE';
-
-    const form = document.getElementById('contact-form');
-    const statusEl = document.getElementById('form-status');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      statusEl.textContent = 'Sending...';
-
-      const formData = new FormData(form);
-
-      try {
-        const res = await fetch(SCRIPT_URL, {
-          method: 'POST',
-          body: formData
-        });
-
-        if (!res.ok) {
-          throw new Error('Network response was not ok');
-        }
-
-        statusEl.textContent = 'Thank you. I\'ll review your message and follow up with next steps.';
-        form.reset();
-      } catch (err) {
-        console.error(err);
-        statusEl.textContent = 'Something went wrong sending your message. Please try again or email me directly.';
-      }
-    });
-  </script>
-
-</body>
-</html>
+            <textarea id="outcome" name="
