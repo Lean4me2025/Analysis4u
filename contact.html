@@ -1,98 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact – Analysis4U</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="page-wrapper">
-    <header class="site-header">
-      <div class="nav-bar">
-        <div class="brand">ANALYSIS4U</div>
-        <nav class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="services.html">Services</a>
-          <a href="about.html">About</a>
-          <a href="contact.html" class="active">Contact</a>
-        </nav>
-      </div>
-    </header>
 
-    <main>
-      <section class="section">
-        <header class="section-header">
-          <div class="section-kicker">Contact</div>
-          <h1 class="section-title">Tell me what you need analyzed</h1>
-          <p class="section-subtitle">
-            Tell me about your business, process issue, or data problem.  
-            I review each message personally and follow up with clear next steps.
-          </p>
-        </header>
+  <!-- Navigation -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Analysis4U</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-        <div class="contact-grid">
-          <div class="contact-panel">
-            <form action="https://formspree.io/f/mjklgabn"
-              <div class="form-field">
-                <label for="name">Full Name</label>
-                <input id="name" type="text" placeholder="Your name" required />
-              </div>
+  <main class="content-container">
 
-              <div class="form-field">
-                <label for="email">Email</label>
-                <input id="email" type="email" placeholder="you@example.com" required />
-              </div>
+    <section class="contact-section">
+      <h1>Tell me what you need analyzed</h1>
+      <p>
+        Tell me about your business, process issue, or data problem. I review each message
+        personally and follow up with clear next steps.
+      </p>
 
-              <div class="form-field">
-                <label for="company">Company Name</label>
-                <input id="company" type="text" placeholder="Your business or organization" />
-              </div>
-
-              <div class="form-field">
-                <label for="address">Business Address / City / ZIP</label>
-                <input id="address" type="text" placeholder="Location or service area" />
-              </div>
-
-              <div class="form-field">
-                <label for="problem">What problem are you trying to solve?</label>
-                <textarea id="problem" placeholder="Describe the analysis, process issue, incident trend, or question you need clarity on." required></textarea>
-              </div>
-
-              <div class="form-field">
-                <label for="goal">What outcome do you hope to achieve?</label>
-                <textarea id="goal" placeholder="Example: reduce incidents, improve workflow, understand patterns, find cost savings."></textarea>
-              </div>
-
-              <button type="submit" class="btn-primary">Send Message</button>
-            </form>
+      <form id="contact-form">
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Your name" required>
           </div>
 
-          <div>
-            <h3>How I’ll respond</h3>
-            <p>
-              After you submit your message, I’ll review the details and reach out with:
-            </p>
-            <ul>
-              <li>A short assessment of your situation</li>
-              <li>Possible next steps</li>
-              <li>Data or access I might need</li>
-              <li>A rough timeline or approach tailored to you</li>
-            </ul>
-            <p>
-              My goal is to give you clarity and a path forward — not confusion or jargon.
-            </p>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </div>
+
+          <div class="form-field">
+            <label for="company">Company Name</label>
+            <input type="text" id="company" name="company" placeholder="Your business or organization">
+          </div>
+
+          <div class="form-field">
+            <label for="address">Business Address / City / ZIP</label>
+            <input type="text" id="address" name="address" placeholder="Location or service area">
           </div>
         </div>
-      </section>
-    </main>
 
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <div>© 2025 Analysis4U</div>
-        <div>Clarity for your business, process, and data.</div>
-      </div>
-    </footer>
-  </div>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="problem">What problem are you trying to solve?</label>
+            <textarea id="problem" name="problem" rows="4"
+              placeholder="Describe the analysis, process issue, incident trend, or question you need clarity on."
+              required></textarea>
+          </div>
+
+          <div class="form-field">
+            <label for="outcome">What outcome do you hope to achieve?</label>
+            <textarea id="outcome" name="outcome" rows="4"
+              placeholder="Example: reduce incidents, improve workflow, understand patterns, find cost savings."
+              required></textarea>
+          </div>
+        </div>
+
+        <input type="hidden" name="source" value="Analysis4U">
+
+        <button type="submit" class="hero-button">Send Message</button>
+
+        <p id="form-status" class="form-status"></p>
+      </form>
+
+      <h2>How I’ll respond</h2>
+      <p>
+        I’ll review your message, look at the type of data you have available, and reply with
+        next-step options. That may include a quick clarification email, a proposal for a
+        focused analysis, or suggestions on how to start gathering the right data.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Analysis4U. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // 👇 Replace this with your Apps Script web app URL
+    const SCRIPT_URL = 'PASTE_YOUR_WEB_APP_URL_HERE';
+
+    const form = document.getElementById('contact-form');
+    const statusEl = document.getElementById('form-status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.textContent = 'Sending...';
+
+      const formData = new FormData(form);
+
+      try {
+        const res = await fetch(SCRIPT_URL, {
+          method: 'POST',
+          body: formData
+        });
+
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        statusEl.textContent = 'Thank you. I\'ll review your message and follow up with next steps.';
+        form.reset();
+      } catch (err) {
+        console.error(err);
+        statusEl.textContent = 'Something went wrong sending your message. Please try again or email me directly.';
+      }
+    });
+  </script>
+
 </body>
 </html>
