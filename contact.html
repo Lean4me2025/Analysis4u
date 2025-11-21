@@ -1,69 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>Contact – Analysis4U</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-
-  <!-- Navigation -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">Analysis4U</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
-      </ul>
+  <!-- Top Navigation -->
+  <header class="site-header">
+    <div class="logo">ANALYSIS4U</div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
     </nav>
   </header>
 
-  <main class="content-container">
-
+  <main>
+    <!-- Contact Intro -->
     <section class="contact-section">
       <h1>Tell me what you need analyzed</h1>
       <p>
-        Tell me about your business, process issue, or data problem. I review each message
-        personally and follow up with clear next steps.
+        Tell me about your business, process issue, or data problem.  
+        I review each message personally and follow up with clear next steps.
       </p>
 
       <!-- CONTACT FORM -->
-      <!-- No action attribute – JS below will send it to your Apps Script -->
-      <form id="contact-form" method="POST">
+      <form id="contactForm" class="contact-form">
         <div class="form-grid">
           <div class="form-field">
             <label for="fullName">Full Name</label>
-            <input type="text" id="fullName" name="fullName" placeholder="Your name" required>
+            <input type="text" id="fullName" name="fullName" required />
           </div>
 
           <div class="form-field">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            <input type="email" id="email" name="email" required />
           </div>
 
           <div class="form-field">
             <label for="company">Company Name</label>
-            <input type="text" id="company" name="company" placeholder="Your business or organization">
+            <input type="text" id="company" name="company" />
           </div>
 
           <div class="form-field">
             <label for="address">Business Address / City / ZIP</label>
-            <input type="text" id="address" name="address" placeholder="Location or service area">
+            <input type="text" id="address" name="address" />
           </div>
         </div>
 
         <div class="form-grid">
           <div class="form-field">
             <label for="problem">What problem are you trying to solve?</label>
-            <textarea id="problem" name="problem" rows="4"
+            <textarea
+              id="problem"
+              name="problem"
+              rows="4"
               placeholder="Describe the analysis, process issue, incident trend, or question you need clarity on."
-              required></textarea>
+              required
+            ></textarea>
           </div>
 
           <div class="form-field">
             <label for="outcome">What outcome do you hope to achieve?</label>
-            <textarea id="outcome" name="
+            <textarea
+              id="outcome"
+              name="outcome"
+              rows="4"
+              placeholder="Example: reduce incidents, improve workflow, understand patterns, find cost savings."
+            ></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="primary-button">Send Message</button>
+
+        <p id="formStatus" class="form-status"></p>
+      </form>
+
+      <section class="contact-followup">
+        <h2>How I’ll respond</h2>
+        <p>
+          I’ll review your message, look at the type of data you have available,
+          and reply with next-step options:
+        </p>
+        <ul>
+          <li>Quick assessment of what’s possible with your data</li>
+          <li>Recommended charts, dashboards, or reports</li>
+          <li>Expected effort and turnaround time</li>
+        </ul>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Analysis4U · Drew Harris</p>
+  </footer>
+
+  <!-- Form wiring to Google Apps Script -->
+  <script>
+    // Your live Web App endpoint from Apps Script
+    const SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbyvtn0wD_nt6LiqSf7G5sW_k4HfeaABWRNmUPr-f6WGiHahQo_-0u0cu73M94gJ00QC/exec";
+
+    const form = document.getElementById("contactForm");
+    const statusEl = document.getElementById("formStatus");
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      statusEl.textContent = "Sending...";
+      statusEl.classList.remove("error");
+      statusEl.classList.remove("success");
+
+      const payload = {
+        fullName: form.fullName.value.trim(),
+        email: form.email.value.trim(),
+        company: form.company.value.trim(),
+        address: form.address.value.trim(),
+        problem: form.problem.value.trim(),
+        outcome: form.outcome.value.trim(),
+      };
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors", // send without CORS blocking; response is opaque but Apps Script still receives it
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        statusEl.textContent =
+          "Thanks! Your message has been sent. I’ll follow up with next steps.";
+        statusEl.classList.add("success");
+        form.reset();
+      } catch (err) {
+        console.error(err);
+        statusEl.textContent =
+          "Something went wrong sending your message. Please email me directly at drewhrs2@gmail.com.";
+        statusEl.classList.add("error");
+      }
+    });
+  </script>
+</body>
+</html>
