@@ -1,5 +1,6 @@
 /* ==============
    Global Styles
+   File: style.css
    ============== */
 
 *,
@@ -16,9 +17,14 @@
   --text-main: #0f172a;
   --text-muted: #4b5563;
   --white: #ffffff;
-  --max-width: 1100px;
+  --max-width: 1180px;
+  --page-padding: clamp(1.5rem, 5vw, 4rem);
   --radius-card: 10px;
   --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.18);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -48,7 +54,7 @@ main {
    ============== */
 
 .site-header {
-  background: rgba(5, 42, 73, 0.92);
+  background: rgba(5, 42, 73, 0.94);
   color: var(--white);
   position: sticky;
   top: 0;
@@ -59,7 +65,7 @@ main {
 .nav-bar {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0.75rem 1.25rem;
+  padding: 0.85rem var(--page-padding);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -110,7 +116,7 @@ main {
   position: relative;
   color: var(--white);
   text-align: left;
-  padding: 4.5rem 1.25rem 4rem;
+  padding: 4.75rem var(--page-padding) 4.25rem;
   overflow: hidden;
 }
 
@@ -127,8 +133,9 @@ main {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top left, rgba(28, 181, 224, 0.35), transparent 55%),
-              linear-gradient(to bottom right, rgba(5, 42, 73, 0.7), rgba(5, 42, 73, 0.95));
+  background:
+    radial-gradient(circle at top left, rgba(28, 181, 224, 0.35), transparent 55%),
+    linear-gradient(to bottom right, rgba(5, 42, 73, 0.7), rgba(5, 42, 73, 0.95));
   z-index: -1;
 }
 
@@ -161,7 +168,7 @@ main {
 
 .hero-subtitle {
   font-size: 1.05rem;
-  max-width: 32rem;
+  max-width: 36rem;
   opacity: 0.96;
   margin-bottom: 1.5rem;
 }
@@ -270,7 +277,7 @@ main {
 .section {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 3rem 1.25rem 3.25rem;
+  padding: 3.25rem var(--page-padding) 3.5rem;
 }
 
 .section-header {
@@ -292,10 +299,12 @@ main {
 
 .section-subtitle {
   color: var(--text-muted);
-  max-width: 40rem;
+  max-width: 44rem;
 }
 
-/* Problem list */
+/* ==============
+   Problem Grid
+   ============== */
 
 .problem-grid {
   display: grid;
@@ -307,12 +316,14 @@ main {
 .problem-card {
   background: var(--white);
   border-radius: var(--radius-card);
-  padding: 0.75rem 0.9rem;
+  padding: 0.9rem 1rem;
   border: 1px solid #e5e7eb;
   font-size: 0.93rem;
 }
 
-/* Services */
+/* ==============
+   Services
+   ============== */
 
 .service-grid {
   display: grid;
@@ -334,6 +345,10 @@ main {
   margin-bottom: 0.4rem;
 }
 
+.service-card p {
+  color: var(--text-muted);
+}
+
 .service-tag {
   display: inline-block;
   font-size: 0.7rem;
@@ -343,7 +358,9 @@ main {
   margin-bottom: 0.4rem;
 }
 
-/* About */
+/* ==============
+   About
+   ============== */
 
 .about-layout {
   display: grid;
@@ -352,16 +369,22 @@ main {
   margin-top: 1.5rem;
 }
 
+.about-layout p {
+  color: var(--text-muted);
+}
+
 .about-highlight {
   background: var(--white);
   border-radius: var(--radius-card);
-  padding: 1rem 1.2rem;
+  padding: 1.1rem 1.25rem;
   border-left: 4px solid var(--accent-cyan);
   font-size: 0.95rem;
   color: var(--text-muted);
 }
 
-/* Contact */
+/* ==============
+   Contact
+   ============== */
 
 .contact-grid {
   display: grid;
@@ -376,6 +399,10 @@ main {
   padding: 1.5rem 1.4rem;
   border: 1px solid #e5e7eb;
   box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+}
+
+.contact-panel p {
+  color: var(--text-muted);
 }
 
 .form-field {
@@ -403,13 +430,15 @@ main {
   resize: vertical;
 }
 
-/* Footer */
+/* ==============
+   Footer
+   ============== */
 
 .site-footer {
   background: var(--primary-blue-dark);
   color: #e5e7eb;
   font-size: 0.8rem;
-  padding: 1.25rem 1.25rem;
+  padding: 1.25rem var(--page-padding);
 }
 
 .footer-inner {
@@ -431,11 +460,19 @@ main {
   .contact-grid {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  .hero-stats-card {
+    max-width: 560px;
+  }
 }
 
 @media (max-width: 640px) {
+  :root {
+    --page-padding: 1.25rem;
+  }
+
   .nav-links {
-    display: none; /* simplification for now */
+    display: none;
   }
 
   .hero {
@@ -446,5 +483,20 @@ main {
 
   .hero-title span {
     display: inline;
+  }
+
+  .hero-cta-row {
+    align-items: flex-start;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.75rem;
   }
 }
