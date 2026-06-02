@@ -2,136 +2,151 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Contact – Analysis4U</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Lean & Six Sigma Improvement Associates</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <!-- Header / Nav -->
-  <header class="site-header">
-    <div class="logo">ANALYSIS4U</div>
-    <nav class="nav">
+
+<header class="site-header">
+  <div class="container nav-container">
+    <div class="brand">
+      <h1>Lean & Six Sigma Improvement Associates</h1>
+      <p>Operational Excellence • Process Improvement • Quality Performance</p>
+    </div>
+
+    <nav class="nav-links">
       <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
       <a href="about.html">About</a>
-      <a href="contact.html" class="active">Contact</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <section class="contact-section">
-      <h1>Tell me what you need analyzed</h1>
-      <p>
-        Share a bit about your business, process issue, or data problem.
-        I’ll review it personally and follow up with clear, practical next steps.
-      </p>
+<main>
 
-      <form id="contactForm" class="contact-form">
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <p class="eyebrow">Request an Assessment</p>
+        <h2>Let’s Identify Where Your Operation Can Improve.</h2>
+        <p class="hero-subtitle">
+          Tell us about your organization, your biggest operational challenge, and the type of support you need. We will review your request and follow up to discuss the best assessment option.
+        </p>
+      </div>
+
+      <div class="hero-card">
+        <h3>Best Fit Services</h3>
+        <p>3-Day Rapid Assessment • 5-Day Deep Dive • Transformation & Implementation Support</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <h2>Request Your Operational Excellence Assessment</h2>
+
+      <form class="contact-form" action="mailto:drewhrs@gmail.com" method="post" enctype="text/plain">
+
         <div class="form-grid">
-          <div class="form-field">
-            <label for="fullName">Full Name</label>
-            <input type="text" id="fullName" name="fullName" required />
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="Name" required>
           </div>
 
-          <div class="form-field">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" name="Company" required>
           </div>
 
-          <div class="form-field">
-            <label for="company">Company</label>
-            <input type="text" id="company" name="company" />
+          <div class="form-group">
+            <label>Title / Role</label>
+            <input type="text" name="Title">
           </div>
 
-          <div class="form-field">
-            <label for="address">Business Address / City / ZIP</label>
-            <input type="text" id="address" name="address" />
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="Email" required>
+          </div>
+
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" name="Phone">
+          </div>
+
+          <div class="form-group">
+            <label>Industry</label>
+            <select name="Industry">
+              <option value="">Select Industry</option>
+              <option>Aerospace</option>
+              <option>Healthcare</option>
+              <option>Biotechnology</option>
+              <option>Banking</option>
+              <option>Financial Services</option>
+              <option>Manufacturing</option>
+              <option>Warehousing & Distribution</option>
+              <option>Information Technology</option>
+              <option>Security Operations</option>
+              <option>Government</option>
+              <option>Professional Services</option>
+              <option>Other</option>
+            </select>
           </div>
         </div>
 
-        <div class="form-grid">
-          <div class="form-field">
-            <label for="problem">What problem are you trying to solve?</label>
-            <textarea
-              id="problem"
-              name="problem"
-              rows="4"
-              placeholder="Describe the issue, trend, or decision you need clarity on."
-              required
-            ></textarea>
-          </div>
-
-          <div class="form-field">
-            <label for="outcome">What outcome do you hope to achieve?</label>
-            <textarea
-              id="outcome"
-              name="outcome"
-              rows="4"
-              placeholder="Example: reduce incidents, improve workflow, find cost savings, see patterns."
-            ></textarea>
+        <div class="form-group">
+          <label>What is your biggest challenge?</label>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" name="Challenge" value="Productivity"> Productivity</label>
+            <label><input type="checkbox" name="Challenge" value="Quality"> Quality</label>
+            <label><input type="checkbox" name="Challenge" value="Cost Reduction"> Cost Reduction</label>
+            <label><input type="checkbox" name="Challenge" value="Compliance"> Compliance</label>
+            <label><input type="checkbox" name="Challenge" value="Capacity Constraints"> Capacity Constraints</label>
+            <label><input type="checkbox" name="Challenge" value="Customer Satisfaction"> Customer Satisfaction</label>
+            <label><input type="checkbox" name="Challenge" value="Process Design"> Process Design / Future State</label>
+            <label><input type="checkbox" name="Challenge" value="Operational Excellence"> Complete Operational Excellence Review</label>
           </div>
         </div>
 
-        <button type="submit" class="primary-button">Send Message</button>
+        <div class="form-group">
+          <label>Which service interests you?</label>
+          <div class="checkbox-grid">
+            <label><input type="radio" name="Service" value="3-Day Rapid Assessment"> 3-Day Rapid Operational Assessment</label>
+            <label><input type="radio" name="Service" value="5-Day Deep Dive"> 5-Day Operational Excellence Deep Dive</label>
+            <label><input type="radio" name="Service" value="Transformation Program"> Transformation & Implementation Program</label>
+            <label><input type="radio" name="Service" value="Not Sure"> Not Sure Yet</label>
+          </div>
+        </div>
 
-        <p id="formStatus" class="form-status"></p>
+        <div class="form-group">
+          <label>Tell us about your situation</label>
+          <textarea name="Situation" rows="7" placeholder="Briefly describe the process, department, operation, or business challenge you want reviewed."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Preferred contact method</label>
+          <div class="checkbox-grid">
+            <label><input type="radio" name="Preferred Contact" value="Phone"> Phone</label>
+            <label><input type="radio" name="Preferred Contact" value="Email"> Email</label>
+            <label><input type="radio" name="Preferred Contact" value="Video Meeting"> Video Meeting</label>
+          </div>
+        </div>
+
+        <button class="btn primary" type="submit">Request My Assessment</button>
+
       </form>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer class="site-footer">
-    <p>© <span id="year"></span> Analysis4U · Drew Harris</p>
-  </footer>
+</main>
 
-  <script>
-    // 🔗 Your Apps Script Web App URL (the one that ends with /exec)
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzQKCtRYklVZgVTPapmuKIUzLMTcdnz5Idi_NG5dtqw80Heaz_ZHI0SprjraPnqog_G/exec";
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2026 Lean & Six Sigma Improvement Associates. All rights reserved.</p>
+  </div>
+</footer>
 
-    const form = document.getElementById("contactForm");
-    const statusEl = document.getElementById("formStatus");
-    const yearEl = document.getElementById("year");
-
-    if (yearEl) {
-      yearEl.textContent = new Date().getFullYear();
-    }
-
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-
-      statusEl.textContent = "Sending...";
-      statusEl.classList.remove("error", "success");
-
-      const payload = {
-        fullName: form.fullName.value.trim(),
-        email: form.email.value.trim(),
-        company: form.company.value.trim(),
-        address: form.address.value.trim(),
-        problem: form.problem.value.trim(),
-        outcome: form.outcome.value.trim(),
-      };
-
-      try {
-        // Fire-and-forget style; we don't need to read the response body.
-        await fetch(SCRIPT_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        });
-
-        statusEl.textContent =
-          "Thanks! Your message has been sent. I’ll follow up with next steps.";
-        statusEl.classList.add("success");
-        form.reset();
-      } catch (err) {
-        console.error(err);
-        statusEl.textContent =
-          "Something went wrong sending your message. Please try again or email me directly at drewhrs2@gmail.com.";
-        statusEl.classList.add("error");
-      }
-    });
-  </script>
 </body>
 </html>
