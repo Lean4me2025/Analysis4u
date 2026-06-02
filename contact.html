@@ -5,6 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | Lean & Six Sigma Improvement Associates</title>
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .contact-form {
+      background: #ffffff;
+      border: 1px solid #cfd8e3;
+      border-radius: 20px;
+      padding: 34px;
+      box-shadow: 0 14px 35px rgba(11, 31, 53, 0.12);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 800;
+      color: #0b1f35;
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #b8c4d1;
+      border-radius: 10px;
+      font-size: 1rem;
+      background: #ffffff;
+    }
+
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .checkbox-grid label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #eef4f8;
+      border: 1px solid #cfd8e3;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-weight: 700;
+      color: #1f2933;
+    }
+
+    .checkbox-grid input {
+      width: auto;
+    }
+
+    @media (max-width: 850px) {
+      .form-grid,
+      .checkbox-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-form {
+        padding: 24px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -33,13 +105,15 @@
         <p class="eyebrow">Request an Assessment</p>
         <h2>Let’s Identify Where Your Operation Can Improve.</h2>
         <p class="hero-subtitle">
-          Tell us about your organization, your biggest operational challenge, and the type of support you need. We will review your request and follow up to discuss the best assessment option.
+          Tell us about your organization, your biggest operational challenge, and the type of support you need.
         </p>
       </div>
 
       <div class="hero-card">
         <h3>Best Fit Services</h3>
-        <p>3-Day Rapid Assessment • 5-Day Deep Dive • Transformation & Implementation Support</p>
+        <p>3-Day Rapid Assessment</p>
+        <p>5-Day Deep Dive</p>
+        <p>Transformation & Implementation Support</p>
       </div>
     </div>
   </section>
@@ -52,33 +126,33 @@
 
         <div class="form-grid">
           <div class="form-group">
-            <label>Name</label>
-            <input type="text" name="Name" required>
+            <label for="name">Name</label>
+            <input id="name" type="text" name="Name" required>
           </div>
 
           <div class="form-group">
-            <label>Company</label>
-            <input type="text" name="Company" required>
+            <label for="company">Company</label>
+            <input id="company" type="text" name="Company" required>
           </div>
 
           <div class="form-group">
-            <label>Title / Role</label>
-            <input type="text" name="Title">
+            <label for="title">Title / Role</label>
+            <input id="title" type="text" name="Title">
           </div>
 
           <div class="form-group">
-            <label>Email</label>
-            <input type="email" name="Email" required>
+            <label for="email">Email</label>
+            <input id="email" type="email" name="Email" required>
           </div>
 
           <div class="form-group">
-            <label>Phone</label>
-            <input type="tel" name="Phone">
+            <label for="phone">Phone</label>
+            <input id="phone" type="tel" name="Phone">
           </div>
 
           <div class="form-group">
-            <label>Industry</label>
-            <select name="Industry">
+            <label for="industry">Industry</label>
+            <select id="industry" name="Industry">
               <option value="">Select Industry</option>
               <option>Aerospace</option>
               <option>Healthcare</option>
@@ -121,8 +195,8 @@
         </div>
 
         <div class="form-group">
-          <label>Tell us about your situation</label>
-          <textarea name="Situation" rows="7" placeholder="Briefly describe the process, department, operation, or business challenge you want reviewed."></textarea>
+          <label for="situation">Tell us about your situation</label>
+          <textarea id="situation" name="Situation" rows="7" placeholder="Briefly describe the process, department, operation, or business challenge you want reviewed."></textarea>
         </div>
 
         <div class="form-group">
