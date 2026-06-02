@@ -166,7 +166,7 @@ body {
 }
 
 .section.light {
-  background: var(--light);
+  background: #eef4f8;
 }
 
 .section.dark {
